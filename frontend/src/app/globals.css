@@ -1,0 +1,173 @@
+@import "tailwindcss";
+
+/* =====================================================================
+   EduVest design tokens (SBI-style blue banking look)
+   Written for Tailwind CSS v4 (default with create-next-app).
+   ===================================================================== */
+
+:root {
+  /* Brand colours */
+  --eduvest-navy: #14275f;      /* top bar, footer */
+  --eduvest-blue: #1e4fa3;      /* main navigation, headings, links */
+  --eduvest-blue-dark: #173f85; /* hover states */
+  --eduvest-cyan: #00a8e1;      /* accents, primary buttons */
+  --eduvest-cyan-dark: #008cbd; /* button hover */
+  --eduvest-light: #eaf3fb;     /* light section backgrounds */
+  --eduvest-lighter: #f5f9fd;   /* page tint */
+
+  /* Text and borders */
+  --text-strong: #1a2233;
+  --text-body: #2f3b52;
+  --text-muted: #667085;
+  --border-color: #d9e2ec;
+  --surface: #ffffff;
+
+  /* Status colours */
+  --success: #1a8754;
+  --warning: #d98e04;
+  --danger: #c0392b;
+
+  /* Layout */
+  --container-max: 1200px;
+  --radius: 6px;
+  --eduvest-shadow: 0 1px 3px rgba(20, 39, 95, 0.1), 0 4px 12px rgba(20, 39, 95, 0.06);
+
+  /* Typography: Latin + Kannada fallbacks so Kannada text always renders */
+  --eduvest-font: var(--font-open-sans), var(--font-noto-kannada), "Open Sans",
+    "Noto Sans Kannada", "Segoe UI", Roboto, Arial, sans-serif;
+}
+
+/* Expose tokens as Tailwind utilities: bg-brand, text-brand-navy, etc. */
+@theme inline {
+  --color-navy: var(--eduvest-navy);
+  --color-brand: var(--eduvest-blue);
+  --color-brand-dark: var(--eduvest-blue-dark);
+  --color-accent: var(--eduvest-cyan);
+  --color-accent-dark: var(--eduvest-cyan-dark);
+  --color-tint: var(--eduvest-light);
+  --color-tint-light: var(--eduvest-lighter);
+  --color-strong: var(--text-strong);
+  --color-body: var(--text-body);
+  --color-muted: var(--text-muted);
+  --color-line: var(--border-color);
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --color-danger: var(--danger);
+  --font-sans: var(--eduvest-font);
+  --shadow-card: var(--eduvest-shadow);
+}
+
+/* ---------- Base ---------- */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--eduvest-lighter);
+  color: var(--text-body);
+  font-family: var(--eduvest-font);
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  color: var(--text-strong);
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+h1 {
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+}
+h2 {
+  font-size: clamp(1.4rem, 3vw, 1.875rem);
+}
+h3 {
+  font-size: 1.25rem;
+}
+
+a {
+  color: var(--eduvest-blue);
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+
+/* Visible keyboard focus (accessibility) */
+:focus-visible {
+  outline: 3px solid var(--eduvest-cyan);
+  outline-offset: 2px;
+}
+
+/* ---------- Reusable layout helpers ---------- */
+.site-container {
+  width: 100%;
+  max-width: var(--container-max);
+  margin-inline: auto;
+  padding-inline: 1rem;
+}
+
+@media (min-width: 768px) {
+  .site-container {
+    padding-inline: 1.5rem;
+  }
+}
+
+.section {
+  padding-block: 2.5rem;
+}
+
+@media (min-width: 768px) {
+  .section {
+    padding-block: 4rem;
+  }
+}
+
+/* ---------- Buttons ---------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.7rem 1.4rem;
+  border-radius: var(--radius);
+  font-weight: 600;
+  font-size: 0.95rem;
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+.btn:hover {
+  text-decoration: none;
+}
+
+.btn-primary {
+  background: var(--eduvest-cyan);
+  color: #fff;
+}
+.btn-primary:hover {
+  background: var(--eduvest-cyan-dark);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--eduvest-blue);
+  border-color: var(--eduvest-blue);
+}
+.btn-secondary:hover {
+  background: var(--eduvest-blue);
+  color: #fff;
+}
+
+/* ---------- Cards ---------- */
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius);
+  box-shadow: var(--eduvest-shadow);
+}
