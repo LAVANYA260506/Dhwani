@@ -24,6 +24,13 @@
 .DS_Store
 *.pem
 
+# unwanted images
+file.svg
+globe.svg
+next.svg
+vercel.svg
+window.svg
+
 # debug
 npm-debug.log*
 yarn-debug.log*
@@ -39,3 +46,8 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# unwanted packages
+*.mjs
+*.config.ts
+*.json
