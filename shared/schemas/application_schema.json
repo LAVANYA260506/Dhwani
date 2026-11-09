@@ -1,0 +1,237 @@
+{
+  "form_id": "eduvest_education_loan",
+  "version": "1.0",
+  "languages": ["en", "kn"],
+  "notes": {
+    "core": "Fields with core=true form the minimum demo journey. Fields without it are still part of the form.",
+    "show_if": "A field with show_if is only shown (and, if required, only required) when the referenced field equals the given value.",
+    "calculated": "Calculated fields are computed by the backend. The applicant only confirms them.",
+    "compare_with_document": "Fields compared against the extracted marks card in Phase 7."
+  },
+  "option_sets": {
+    "yes_no": [
+      {"value": "yes", "en": "Yes", "kn": "ಹೌದು"},
+      {"value": "no", "en": "No", "kn": "ಇಲ್ಲ"}
+    ],
+    "gender": [
+      {"value": "male", "en": "Male", "kn": "ಪುರುಷ"},
+      {"value": "female", "en": "Female", "kn": "ಮಹಿಳೆ"},
+      {"value": "other", "en": "Other", "kn": "ಇತರೆ"}
+    ],
+    "marital_status": [
+      {"value": "single", "en": "Single", "kn": "ಅವಿವಾಹಿತ"},
+      {"value": "married", "en": "Married", "kn": "ವಿವಾಹಿತ"},
+      {"value": "other", "en": "Other", "kn": "ಇತರೆ"}
+    ],
+    "nationality": [
+      {"value": "indian", "en": "Indian", "kn": "ಭಾರತೀಯ"},
+      {"value": "other", "en": "Other", "kn": "ಇತರೆ"}
+    ],
+    "category": [
+      {"value": "general", "en": "General", "kn": "ಸಾಮಾನ್ಯ"},
+      {"value": "obc", "en": "OBC", "kn": "ಒಬಿಸಿ"},
+      {"value": "sc", "en": "SC", "kn": "ಎಸ್‌ಸಿ"},
+      {"value": "st", "en": "ST", "kn": "ಎಸ್‌ಟಿ"}
+    ],
+    "institution_type": [
+      {"value": "government", "en": "Government", "kn": "ಸರ್ಕಾರಿ"},
+      {"value": "private", "en": "Private", "kn": "ಖಾಸಗಿ"},
+      {"value": "deemed", "en": "Deemed university", "kn": "ಡೀಮ್ಡ್ ವಿಶ್ವವಿದ್ಯಾಲಯ"}
+    ],
+    "course_level": [
+      {"value": "ug", "en": "Undergraduate", "kn": "ಪದವಿ"},
+      {"value": "pg", "en": "Postgraduate", "kn": "ಸ್ನಾತಕೋತ್ತರ"},
+      {"value": "diploma", "en": "Diploma", "kn": "ಡಿಪ್ಲೊಮಾ"},
+      {"value": "phd", "en": "PhD", "kn": "ಪಿಎಚ್‌ಡಿ"}
+    ],
+    "study_country": [
+      {"value": "india", "en": "India", "kn": "ಭಾರತ"},
+      {"value": "abroad", "en": "Abroad", "kn": "ವಿದೇಶ"}
+    ],
+    "admission_status": [
+      {"value": "confirmed", "en": "Confirmed", "kn": "ಖಚಿತವಾಗಿದೆ"},
+      {"value": "awaiting", "en": "Awaiting confirmation", "kn": "ನಿರೀಕ್ಷೆಯಲ್ಲಿದೆ"}
+    ],
+    "admission_type": [
+      {"value": "entrance", "en": "Entrance exam", "kn": "ಪ್ರವೇಶ ಪರೀಕ್ಷೆ"},
+      {"value": "merit", "en": "Merit", "kn": "ಅರ್ಹತೆ"},
+      {"value": "management", "en": "Management quota", "kn": "ಆಡಳಿತ ಮಂಡಳಿ ಕೋಟಾ"}
+    ],
+    "qualifying_exam": [
+      {"value": "puc_12th", "en": "12th / PUC", "kn": "೧೨ನೇ ತರಗತಿ / ಪಿಯುಸಿ"},
+      {"value": "diploma", "en": "Diploma", "kn": "ಡಿಪ್ಲೊಮಾ"},
+      {"value": "bachelors", "en": "Bachelor's degree", "kn": "ಪದವಿ"},
+      {"value": "masters", "en": "Master's degree", "kn": "ಸ್ನಾತಕೋತ್ತರ ಪದವಿ"}
+    ],
+    "class_obtained": [
+      {"value": "distinction", "en": "Distinction", "kn": "ಡಿಸ್ಟಿಂಕ್ಷನ್"},
+      {"value": "first", "en": "First class", "kn": "ಪ್ರಥಮ ದರ್ಜೆ"},
+      {"value": "second", "en": "Second class", "kn": "ದ್ವಿತೀಯ ದರ್ಜೆ"},
+      {"value": "pass", "en": "Pass class", "kn": "ಉತ್ತೀರ್ಣ"}
+    ],
+    "margin_source": [
+      {"value": "savings", "en": "Own savings", "kn": "ಸ್ವಂತ ಉಳಿತಾಯ"},
+      {"value": "family", "en": "Family", "kn": "ಕುಟುಂಬ"},
+      {"value": "other", "en": "Other", "kn": "ಇತರೆ"}
+    ],
+    "relationship": [
+      {"value": "father", "en": "Father", "kn": "ತಂದೆ"},
+      {"value": "mother", "en": "Mother", "kn": "ತಾಯಿ"},
+      {"value": "guardian", "en": "Guardian", "kn": "ಪಾಲಕರು"},
+      {"value": "spouse", "en": "Spouse", "kn": "ಸಂಗಾತಿ"},
+      {"value": "sibling", "en": "Brother / Sister", "kn": "ಸಹೋದರ / ಸಹೋದರಿ"},
+      {"value": "other", "en": "Other", "kn": "ಇತರೆ"}
+    ],
+    "collateral_type": [
+      {"value": "property", "en": "Property", "kn": "ಆಸ್ತಿ"},
+      {"value": "fixed_deposit", "en": "Fixed deposit", "kn": "ಸ್ಥಿರ ಠೇವಣಿ"},
+      {"value": "insurance", "en": "Insurance policy", "kn": "ವಿಮಾ ಪಾಲಿಸಿ"},
+      {"value": "other", "en": "Other", "kn": "ಇತರೆ"}
+    ]
+  },
+  "sections": [
+    {
+      "id": "personal_details",
+      "title": {"en": "Student Personal Details", "kn": "ವಿದ್ಯಾರ್ಥಿಯ ವೈಯಕ್ತಿಕ ವಿವರಗಳು"},
+      "fields": [
+        {"id": "full_name", "type": "text", "label": {"en": "Full name (as on marks card)", "kn": "ಪೂರ್ಣ ಹೆಸರು (ಅಂಕಪಟ್ಟಿಯಂತೆ)"}, "required": true, "core": true, "compare_with_document": true, "validation": {"min_length": 2, "max_length": 100}},
+        {"id": "father_name", "type": "text", "label": {"en": "Father's name", "kn": "ತಂದೆಯ ಹೆಸರು"}, "required": true, "core": true, "validation": {"min_length": 2, "max_length": 100}},
+        {"id": "mother_name", "type": "text", "label": {"en": "Mother's name", "kn": "ತಾಯಿಯ ಹೆಸರು"}, "required": true, "validation": {"min_length": 2, "max_length": 100}},
+        {"id": "date_of_birth", "type": "date", "label": {"en": "Date of birth", "kn": "ಹುಟ್ಟಿದ ದಿನಾಂಕ"}, "required": true, "core": true, "compare_with_document": true, "validation": {"min_age": 16, "max_age": 45}},
+        {"id": "gender", "type": "choice", "options": "gender", "label": {"en": "Gender", "kn": "ಲಿಂಗ"}, "required": true, "core": true},
+        {"id": "marital_status", "type": "choice", "options": "marital_status", "label": {"en": "Marital status", "kn": "ವೈವಾಹಿಕ ಸ್ಥಿತಿ"}, "required": true},
+        {"id": "nationality", "type": "choice", "options": "nationality", "label": {"en": "Nationality", "kn": "ರಾಷ್ಟ್ರೀಯತೆ"}, "required": true},
+        {"id": "category", "type": "choice", "options": "category", "label": {"en": "Category", "kn": "ವರ್ಗ"}, "required": true},
+        {"id": "aadhaar_number", "type": "aadhaar", "label": {"en": "Aadhaar number", "kn": "ಆಧಾರ್ ಸಂಖ್ಯೆ"}, "required": true},
+        {"id": "pan_number", "type": "pan", "label": {"en": "PAN number", "kn": "ಪ್ಯಾನ್ ಸಂಖ್ಯೆ"}, "required": false},
+        {"id": "disability_status", "type": "choice", "options": "yes_no", "label": {"en": "Are you a person with disability?", "kn": "ನೀವು ವಿಕಲಚೇತನರೇ?"}, "required": false}
+      ]
+    },
+    {
+      "id": "contact_address",
+      "title": {"en": "Contact and Address", "kn": "ಸಂಪರ್ಕ ಮತ್ತು ವಿಳಾಸ"},
+      "fields": [
+        {"id": "mobile_number", "type": "phone", "label": {"en": "Mobile number", "kn": "ಮೊಬೈಲ್ ಸಂಖ್ಯೆ"}, "required": true, "core": true},
+        {"id": "alternate_mobile", "type": "phone", "label": {"en": "Alternate mobile number", "kn": "ಪರ್ಯಾಯ ಮೊಬೈಲ್ ಸಂಖ್ಯೆ"}, "required": false},
+        {"id": "email", "type": "email", "label": {"en": "Email address", "kn": "ಇಮೇಲ್ ವಿಳಾಸ"}, "required": true, "core": true},
+        {"id": "current_address_line1", "type": "text", "label": {"en": "Current address, line 1", "kn": "ಪ್ರಸ್ತುತ ವಿಳಾಸ, ಸಾಲು 1"}, "required": true, "core": true, "validation": {"min_length": 3, "max_length": 120}},
+        {"id": "current_address_line2", "type": "text", "label": {"en": "Current address, line 2", "kn": "ಪ್ರಸ್ತುತ ವಿಳಾಸ, ಸಾಲು 2"}, "required": false, "validation": {"max_length": 120}},
+        {"id": "current_city", "type": "text", "label": {"en": "City / town", "kn": "ನಗರ / ಊರು"}, "required": true, "core": true, "validation": {"min_length": 2, "max_length": 60}},
+        {"id": "current_state", "type": "text", "label": {"en": "State", "kn": "ರಾಜ್ಯ"}, "required": true, "core": true, "validation": {"min_length": 2, "max_length": 60}},
+        {"id": "current_pincode", "type": "pincode", "label": {"en": "PIN code", "kn": "ಪಿನ್ ಕೋಡ್"}, "required": true, "core": true},
+        {"id": "permanent_address_same", "type": "choice", "options": "yes_no", "label": {"en": "Is your permanent address the same as your current address?", "kn": "ನಿಮ್ಮ ಶಾಶ್ವತ ವಿಳಾಸವು ಪ್ರಸ್ತುತ ವಿಳಾಸದಂತೆಯೇ ಇದೆಯೇ?"}, "required": true},
+        {"id": "permanent_address", "type": "textarea", "label": {"en": "Permanent address", "kn": "ಶಾಶ್ವತ ವಿಳಾಸ"}, "required": true, "show_if": {"field": "permanent_address_same", "equals": "no"}, "validation": {"min_length": 10, "max_length": 300}}
+      ]
+    },
+    {
+      "id": "course_details",
+      "title": {"en": "Course Details", "kn": "ಕೋರ್ಸ್ ವಿವರಗಳು"},
+      "fields": [
+        {"id": "institution_name", "type": "text", "label": {"en": "Institution name", "kn": "ಸಂಸ್ಥೆಯ ಹೆಸರು"}, "required": true, "core": true, "validation": {"min_length": 3, "max_length": 150}},
+        {"id": "institution_type", "type": "choice", "options": "institution_type", "label": {"en": "Type of institution", "kn": "ಸಂಸ್ಥೆಯ ಪ್ರಕಾರ"}, "required": true},
+        {"id": "course_name", "type": "text", "label": {"en": "Course name", "kn": "ಕೋರ್ಸ್ ಹೆಸರು"}, "required": true, "core": true, "validation": {"min_length": 2, "max_length": 120}},
+        {"id": "course_level", "type": "choice", "options": "course_level", "label": {"en": "Course level", "kn": "ಕೋರ್ಸ್ ಹಂತ"}, "required": true, "core": true},
+        {"id": "specialisation", "type": "text", "label": {"en": "Specialisation / branch", "kn": "ವಿಶೇಷತೆ / ವಿಭಾಗ"}, "required": false, "validation": {"max_length": 100}},
+        {"id": "course_duration_years", "type": "number", "label": {"en": "Course duration (years)", "kn": "ಕೋರ್ಸ್ ಅವಧಿ (ವರ್ಷಗಳು)"}, "required": true, "core": true, "validation": {"min": 1, "max": 8}},
+        {"id": "course_start_year", "type": "year", "label": {"en": "Course start year", "kn": "ಕೋರ್ಸ್ ಆರಂಭದ ವರ್ಷ"}, "required": true, "core": true, "validation": {"min": 2020, "max": "current_year+1"}},
+        {"id": "study_country", "type": "choice", "options": "study_country", "label": {"en": "Place of study", "kn": "ಅಧ್ಯಯನದ ಸ್ಥಳ"}, "required": true, "core": true},
+        {"id": "country_name", "type": "text", "label": {"en": "Country name", "kn": "ದೇಶದ ಹೆಸರು"}, "required": true, "core": true, "show_if": {"field": "study_country", "equals": "abroad"}, "validation": {"min_length": 2, "max_length": 60}}
+      ]
+    },
+    {
+      "id": "admission_details",
+      "title": {"en": "Admission Details", "kn": "ಪ್ರವೇಶ ವಿವರಗಳು"},
+      "fields": [
+        {"id": "admission_status", "type": "choice", "options": "admission_status", "label": {"en": "Admission status", "kn": "ಪ್ರವೇಶದ ಸ್ಥಿತಿ"}, "required": true, "core": true},
+        {"id": "admission_type", "type": "choice", "options": "admission_type", "label": {"en": "Admission type", "kn": "ಪ್ರವೇಶದ ವಿಧ"}, "required": true, "core": true},
+        {"id": "entrance_exam_name", "type": "text", "label": {"en": "Entrance exam name", "kn": "ಪ್ರವೇಶ ಪರೀಕ್ಷೆಯ ಹೆಸರು"}, "required": true, "show_if": {"field": "admission_type", "equals": "entrance"}, "validation": {"min_length": 2, "max_length": 80}},
+        {"id": "entrance_exam_rank", "type": "number", "label": {"en": "Entrance exam rank", "kn": "ಪ್ರವೇಶ ಪರೀಕ್ಷೆಯ ರ‍್ಯಾಂಕ್"}, "required": true, "show_if": {"field": "admission_type", "equals": "entrance"}, "validation": {"min": 1, "max": 5000000}}
+      ]
+    },
+    {
+      "id": "academic_record",
+      "title": {"en": "Academic Record", "kn": "ಶೈಕ್ಷಣಿಕ ದಾಖಲೆ"},
+      "fields": [
+        {"id": "qualifying_exam", "type": "choice", "options": "qualifying_exam", "label": {"en": "Qualifying examination", "kn": "ಅರ್ಹತಾ ಪರೀಕ್ಷೆ"}, "required": true, "core": true},
+        {"id": "board_or_university", "type": "text", "label": {"en": "Board / university", "kn": "ಮಂಡಳಿ / ವಿಶ್ವವಿದ್ಯಾಲಯ"}, "required": true, "core": true, "compare_with_document": true, "validation": {"min_length": 2, "max_length": 150}},
+        {"id": "register_number", "type": "text", "label": {"en": "Register number", "kn": "ನೋಂದಣಿ ಸಂಖ್ಯೆ"}, "required": true, "core": true, "compare_with_document": true, "validation": {"min_length": 4, "max_length": 30}},
+        {"id": "year_of_passing", "type": "year", "label": {"en": "Year of passing", "kn": "ಉತ್ತೀರ್ಣರಾದ ವರ್ಷ"}, "required": true, "core": true, "compare_with_document": true, "validation": {"min": 1990, "max": "current_year"}},
+        {"id": "marks_obtained", "type": "number", "label": {"en": "Marks obtained", "kn": "ಗಳಿಸಿದ ಅಂಕಗಳು"}, "required": true, "core": true, "compare_with_document": true, "validation": {"min": 0, "max": 5000}},
+        {"id": "max_marks", "type": "number", "label": {"en": "Maximum marks", "kn": "ಗರಿಷ್ಠ ಅಂಕಗಳು"}, "required": true, "core": true, "compare_with_document": true, "validation": {"min": 1, "max": 5000}},
+        {"id": "percentage", "type": "percentage", "label": {"en": "Percentage", "kn": "ಶೇಕಡಾವಾರು"}, "required": true, "core": true, "compare_with_document": true, "calculated": {"formula": "marks_obtained / max_marks * 100", "round": 2}, "validation": {"min": 0, "max": 100}},
+        {"id": "class_obtained", "type": "choice", "options": "class_obtained", "label": {"en": "Class obtained", "kn": "ಪಡೆದ ದರ್ಜೆ"}, "required": false},
+        {"id": "tenth_percentage", "type": "percentage", "label": {"en": "10th standard percentage", "kn": "೧೦ನೇ ತರಗತಿ ಶೇಕಡಾವಾರು"}, "required": true, "validation": {"min": 0, "max": 100}},
+        {"id": "twelfth_percentage", "type": "percentage", "label": {"en": "12th / PUC percentage", "kn": "೧೨ನೇ ತರಗತಿ / ಪಿಯುಸಿ ಶೇಕಡಾವಾರು"}, "required": true, "validation": {"min": 0, "max": 100}},
+        {"id": "has_backlogs", "type": "choice", "options": "yes_no", "label": {"en": "Do you have any backlogs?", "kn": "ನಿಮಗೆ ಯಾವುದಾದರೂ ಬ್ಯಾಕ್‌ಲಾಗ್ ಇದೆಯೇ?"}, "required": true},
+        {"id": "backlog_count", "type": "number", "label": {"en": "Number of backlog subjects", "kn": "ಬ್ಯಾಕ್‌ಲಾಗ್ ವಿಷಯಗಳ ಸಂಖ್ಯೆ"}, "required": true, "show_if": {"field": "has_backlogs", "equals": "yes"}, "validation": {"min": 1, "max": 50}}
+      ]
+    },
+    {
+      "id": "course_cost",
+      "title": {"en": "Course Cost Estimate", "kn": "ಕೋರ್ಸ್ ವೆಚ್ಚದ ಅಂದಾಜು"},
+      "fields": [
+        {"id": "tuition_fee_total", "type": "currency", "label": {"en": "Total tuition fee (₹)", "kn": "ಒಟ್ಟು ಬೋಧನಾ ಶುಲ್ಕ (₹)"}, "required": true, "core": true, "validation": {"min": 0, "max": 100000000}},
+        {"id": "hostel_fee_total", "type": "currency", "label": {"en": "Total hostel / accommodation cost (₹)", "kn": "ಒಟ್ಟು ವಸತಿ ವೆಚ್ಚ (₹)"}, "required": true, "core": true, "validation": {"min": 0, "max": 100000000}},
+        {"id": "books_equipment_cost", "type": "currency", "label": {"en": "Books and equipment cost (₹)", "kn": "ಪುಸ್ತಕ ಮತ್ತು ಉಪಕರಣಗಳ ವೆಚ್ಚ (₹)"}, "required": true, "validation": {"min": 0, "max": 100000000}},
+        {"id": "travel_cost", "type": "currency", "label": {"en": "Travel cost (₹)", "kn": "ಪ್ರಯಾಣ ವೆಚ್ಚ (₹)"}, "required": true, "show_if": {"field": "study_country", "equals": "abroad"}, "validation": {"min": 0, "max": 100000000}},
+        {"id": "other_expenses", "type": "currency", "label": {"en": "Other expenses (₹)", "kn": "ಇತರ ವೆಚ್ಚಗಳು (₹)"}, "required": false, "validation": {"min": 0, "max": 100000000}},
+        {"id": "total_course_cost", "type": "currency", "label": {"en": "Total course cost (₹)", "kn": "ಒಟ್ಟು ಕೋರ್ಸ್ ವೆಚ್ಚ (₹)"}, "required": true, "core": true, "calculated": {"formula": "tuition_fee_total + hostel_fee_total + books_equipment_cost + travel_cost + other_expenses", "treat_missing_as_zero": true}},
+        {"id": "scholarship_amount", "type": "currency", "label": {"en": "Scholarship amount, if any (₹)", "kn": "ವಿದ್ಯಾರ್ಥಿವೇತನದ ಮೊತ್ತ, ಇದ್ದರೆ (₹)"}, "required": false, "validation": {"min": 0, "max": 100000000}}
+      ]
+    },
+    {
+      "id": "loan_request",
+      "title": {"en": "Loan Request and Financing", "kn": "ಸಾಲದ ಬೇಡಿಕೆ ಮತ್ತು ಹಣಕಾಸು"},
+      "fields": [
+        {"id": "loan_amount_requested", "type": "currency", "label": {"en": "Loan amount requested (₹)", "kn": "ಬೇಕಾದ ಸಾಲದ ಮೊತ್ತ (₹)"}, "required": true, "core": true, "validation": {"min": 10000, "max": 15000000}},
+        {"id": "repayment_tenure_years", "type": "number", "label": {"en": "Preferred repayment period (years)", "kn": "ಮರುಪಾವತಿ ಅವಧಿ (ವರ್ಷಗಳು)"}, "required": true, "core": true, "validation": {"min": 1, "max": 15}},
+        {"id": "moratorium_acknowledged", "type": "checkbox", "label": {"en": "I understand repayment begins after my course ends plus the moratorium period", "kn": "ಕೋರ್ಸ್ ಮುಗಿದು ನಿಗದಿತ ಅವಧಿಯ ನಂತರ ಮರುಪಾವತಿ ಆರಂಭವಾಗುತ್ತದೆ ಎಂದು ನಾನು ಅರ್ಥಮಾಡಿಕೊಂಡಿದ್ದೇನೆ"}, "required": true},
+        {"id": "margin_money_amount", "type": "currency", "label": {"en": "Margin money you will contribute (₹)", "kn": "ನೀವು ಭರಿಸುವ ಮಾರ್ಜಿನ್ ಹಣ (₹)"}, "required": true, "validation": {"min": 0, "max": 100000000}},
+        {"id": "margin_source", "type": "choice", "options": "margin_source", "label": {"en": "Source of margin money", "kn": "ಮಾರ್ಜಿನ್ ಹಣದ ಮೂಲ"}, "required": true},
+        {"id": "other_loans_for_education", "type": "choice", "options": "yes_no", "label": {"en": "Have you taken any other loan for education?", "kn": "ಶಿಕ್ಷಣಕ್ಕಾಗಿ ಬೇರೆ ಯಾವುದಾದರೂ ಸಾಲ ಪಡೆದಿದ್ದೀರಾ?"}, "required": true}
+      ]
+    },
+    {
+      "id": "co_applicant",
+      "title": {"en": "Parent / Co-applicant Details", "kn": "ಪೋಷಕರು / ಸಹ-ಅರ್ಜಿದಾರರ ವಿವರಗಳು"},
+      "fields": [
+        {"id": "co_applicant_name", "type": "text", "label": {"en": "Co-applicant full name", "kn": "ಸಹ-ಅರ್ಜಿದಾರರ ಪೂರ್ಣ ಹೆಸರು"}, "required": true, "core": true, "validation": {"min_length": 2, "max_length": 100}},
+        {"id": "co_applicant_relationship", "type": "choice", "options": "relationship", "label": {"en": "Relationship with student", "kn": "ವಿದ್ಯಾರ್ಥಿಯೊಂದಿಗಿನ ಸಂಬಂಧ"}, "required": true, "core": true},
+        {"id": "co_applicant_dob", "type": "date", "label": {"en": "Co-applicant date of birth", "kn": "ಸಹ-ಅರ್ಜಿದಾರರ ಹುಟ್ಟಿದ ದಿನಾಂಕ"}, "required": true, "validation": {"min_age": 18, "max_age": 80}},
+        {"id": "co_applicant_pan", "type": "pan", "label": {"en": "Co-applicant PAN number", "kn": "ಸಹ-ಅರ್ಜಿದಾರರ ಪ್ಯಾನ್ ಸಂಖ್ಯೆ"}, "required": true},
+        {"id": "co_applicant_mobile", "type": "phone", "label": {"en": "Co-applicant mobile number", "kn": "ಸಹ-ಅರ್ಜಿದಾರರ ಮೊಬೈಲ್ ಸಂಖ್ಯೆ"}, "required": true, "core": true},
+        {"id": "co_applicant_occupation", "type": "text", "label": {"en": "Co-applicant occupation", "kn": "ಸಹ-ಅರ್ಜಿದಾರರ ವೃತ್ತಿ"}, "required": true, "validation": {"min_length": 2, "max_length": 80}},
+        {"id": "co_applicant_employer_or_business", "type": "text", "label": {"en": "Employer / business name", "kn": "ಉದ್ಯೋಗದಾತ / ವ್ಯಾಪಾರದ ಹೆಸರು"}, "required": true, "validation": {"min_length": 2, "max_length": 120}},
+        {"id": "co_applicant_annual_income", "type": "currency", "label": {"en": "Co-applicant annual income (₹)", "kn": "ಸಹ-ಅರ್ಜಿದಾರರ ವಾರ್ಷಿಕ ಆದಾಯ (₹)"}, "required": true, "core": true, "validation": {"min": 0, "max": 100000000}},
+        {"id": "co_applicant_existing_emi", "type": "currency", "label": {"en": "Co-applicant existing monthly EMI (₹)", "kn": "ಸಹ-ಅರ್ಜಿದಾರರ ಈಗಿರುವ ಮಾಸಿಕ ಇಎಂಐ (₹)"}, "required": true, "validation": {"min": 0, "max": 10000000}}
+      ]
+    },
+    {
+      "id": "collateral_guarantor",
+      "title": {"en": "Collateral and Guarantor", "kn": "ಭದ್ರತೆ ಮತ್ತು ಜಾಮೀನುದಾರ"},
+      "fields": [
+        {"id": "collateral_offered", "type": "choice", "options": "yes_no", "label": {"en": "Are you offering collateral security?", "kn": "ನೀವು ಭದ್ರತೆಯನ್ನು ನೀಡುತ್ತೀರಾ?"}, "required": true, "core": true},
+        {"id": "collateral_type", "type": "choice", "options": "collateral_type", "label": {"en": "Type of collateral", "kn": "ಭದ್ರತೆಯ ಪ್ರಕಾರ"}, "required": true, "show_if": {"field": "collateral_offered", "equals": "yes"}},
+        {"id": "collateral_estimated_value", "type": "currency", "label": {"en": "Estimated value of collateral (₹)", "kn": "ಭದ್ರತೆಯ ಅಂದಾಜು ಮೌಲ್ಯ (₹)"}, "required": true, "show_if": {"field": "collateral_offered", "equals": "yes"}, "validation": {"min": 1, "max": 1000000000}},
+        {"id": "guarantor_name", "type": "text", "label": {"en": "Guarantor name, if any", "kn": "ಜಾಮೀನುದಾರರ ಹೆಸರು, ಇದ್ದರೆ"}, "required": false, "validation": {"min_length": 2, "max_length": 100}}
+      ]
+    },
+    {
+      "id": "declarations",
+      "title": {"en": "Declarations", "kn": "ಘೋಷಣೆಗಳು"},
+      "fields": [
+        {"id": "declaration_info_true", "type": "checkbox", "label": {"en": "I declare that all the information given is true and correct", "kn": "ನೀಡಿರುವ ಎಲ್ಲಾ ಮಾಹಿತಿ ಸತ್ಯ ಮತ್ತು ಸರಿಯಾಗಿದೆ ಎಂದು ನಾನು ಘೋಷಿಸುತ್ತೇನೆ"}, "required": true, "core": true},
+        {"id": "declaration_consent_credit_check", "type": "checkbox", "label": {"en": "I consent to a credit information check", "kn": "ಕ್ರೆಡಿಟ್ ಮಾಹಿತಿ ಪರಿಶೀಲನೆಗೆ ನಾನು ಒಪ್ಪಿಗೆ ನೀಡುತ್ತೇನೆ"}, "required": true, "core": true},
+        {"id": "declaration_terms_accepted", "type": "checkbox", "label": {"en": "I accept the terms and conditions", "kn": "ನಿಯಮಗಳು ಮತ್ತು ಷರತ್ತುಗಳನ್ನು ನಾನು ಒಪ್ಪುತ್ತೇನೆ"}, "required": true, "core": true}
+      ]
+    }
+  ],
+  "cross_field_rules": [
+    {"id": "marks_not_above_max", "fields": ["marks_obtained", "max_marks"], "rule": "marks_obtained <= max_marks", "message": {"en": "Marks obtained cannot be more than maximum marks.", "kn": "ಗಳಿಸಿದ ಅಂಕಗಳು ಗರಿಷ್ಠ ಅಂಕಗಳಿಗಿಂತ ಹೆಚ್ಚಿರಬಾರದು."}},
+    {"id": "percentage_matches_marks", "fields": ["marks_obtained", "max_marks", "percentage"], "rule": "abs(percentage - marks_obtained / max_marks * 100) <= 0.05", "message": {"en": "Percentage does not match the marks entered.", "kn": "ಶೇಕಡಾವಾರು ನಮೂದಿಸಿದ ಅಂಕಗಳಿಗೆ ಹೊಂದಿಕೆಯಾಗುತ್ತಿಲ್ಲ."}},
+    {"id": "loan_within_funding_gap", "fields": ["loan_amount_requested", "total_course_cost", "margin_money_amount", "scholarship_amount"], "rule": "loan_amount_requested <= total_course_cost - margin_money_amount - scholarship_amount", "message": {"en": "Loan amount cannot exceed course cost minus margin money and scholarship.", "kn": "ಸಾಲದ ಮೊತ್ತವು ಕೋರ್ಸ್ ವೆಚ್ಚದಿಂದ ಮಾರ್ಜಿನ್ ಹಣ ಮತ್ತು ವಿದ್ಯಾರ್ಥಿವೇತನವನ್ನು ಕಳೆದ ಮೊತ್ತಕ್ಕಿಂತ ಹೆಚ್ಚಿರಬಾರದು."}},
+    {"id": "course_starts_after_passing", "fields": ["course_start_year", "year_of_passing"], "rule": "course_start_year >= year_of_passing", "message": {"en": "Course start year cannot be before the year of passing.", "kn": "ಕೋರ್ಸ್ ಆರಂಭದ ವರ್ಷವು ಉತ್ತೀರ್ಣರಾದ ವರ್ಷಕ್ಕಿಂತ ಮೊದಲು ಇರಬಾರದು."}},
+    {"id": "passing_year_after_birth", "fields": ["year_of_passing", "date_of_birth"], "rule": "year_of_passing - year(date_of_birth) >= 14", "message": {"en": "Year of passing is not consistent with the date of birth.", "kn": "ಉತ್ತೀರ್ಣರಾದ ವರ್ಷವು ಹುಟ್ಟಿದ ದಿನಾಂಕಕ್ಕೆ ಹೊಂದಿಕೆಯಾಗುತ್ತಿಲ್ಲ."}},
+    {"id": "tenure_covers_reasonable_period", "fields": ["repayment_tenure_years", "course_duration_years"], "rule": "repayment_tenure_years >= 1", "message": {"en": "Repayment period must be at least one year.", "kn": "ಮರುಪಾವತಿ ಅವಧಿ ಕನಿಷ್ಠ ಒಂದು ವರ್ಷ ಇರಬೇಕು."}}
+  ]
+}
