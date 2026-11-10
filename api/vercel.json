@@ -1,0 +1,10 @@
+{
+  "rewrites": [{ "source": "/(.*)", "destination": "/api/index" }],
+  "functions": {
+    "api/index.py": {
+      "maxDuration": 60,
+      "includeFiles": "{backend,ai_engine,shared}/**",
+      "excludeFiles": "{frontend,scripts,tests,docs}/**"
+    }
+  }
+}
