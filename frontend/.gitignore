@@ -46,8 +46,3 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
-
-# unwanted packages
-*.mjs
-*.config.ts
-*.json
