@@ -154,7 +154,12 @@ export function useApplication() {
     [handleError]
   );
 
-  const reset = useCallback(() => {
+   const reset = useCallback(async () => {
+    try {
+      await api.deleteApplication(); // remove the data from the server
+    } catch {
+      /* already gone or session invalid: carry on */
+    }
     clearToken();
     setApplication(null);
     setLastResult(null);
@@ -172,4 +177,5 @@ export function useApplication() {
     refresh,
     reset,
   };
-}
+
+} 

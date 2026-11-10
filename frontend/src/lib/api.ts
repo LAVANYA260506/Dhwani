@@ -7,6 +7,8 @@ import type {
   FieldUpdateResult,
   FieldValue,
   Language,
+  ReviewRead,
+  SubmitResult,
 } from "./types";
 
 const BASE_URL = (
@@ -68,6 +70,7 @@ async function request<T>(
     throw new ApiError(response.status, code, message, details);
   }
 
+    if (response.status === 204) return undefined as T;
   return (await response.json()) as T;
 }
 
@@ -82,6 +85,8 @@ export const api = {
   getApplication: () => request<ApplicationRead>("/applications/me"),
 
   resumeApplication: () => request<ApplicationRead>("/applications/me/resume"),
+
+  deleteApplication: () => request<void>("/applications/me", { method: "DELETE" }),
 
   changeLanguage: (language: Language) =>
     request<ApplicationRead>("/applications/me/language", {
@@ -106,4 +111,9 @@ export const api = {
     if (afterId !== undefined) params.set("after_id", String(afterId));
     return request<EventList>(`/applications/me/events?${params}`);
   },
+
+  getReview: () => request<ReviewRead>("/submission/review"),
+
+    submitApplication: (confirm: boolean) =>
+    request<SubmitResult>("/submission/submit", { method: "POST", body: { confirm } }),
 };

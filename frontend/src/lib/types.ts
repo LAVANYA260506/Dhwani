@@ -91,3 +91,138 @@ export interface ApplicationEvent {
 export interface EventList {
   events: ApplicationEvent[];
 }
+
+// ---- Voice and agent (backend/app/schemas/agent.py, api/routes/voice.py) ----
+
+export interface FieldHelp {
+  field_id: string;
+  language: string;
+  label: string;
+  explanation: string;
+  example: string;
+  where_to_find: string;
+  common_mistakes: unknown;
+}
+
+export interface AgentField {
+  field_id: string;
+  label: string;
+  value: FieldValue;
+}
+
+export interface AgentRejection {
+  field_id: string;
+  label: string;
+  issues: FieldIssue[];
+}
+
+export interface AgentTurnResponse {
+  reply: string;
+  speech: string;
+  intent: string;
+  understood_by: "llm" | "rules" | "none";
+  saved: AgentField[];
+  pending_confirmation: AgentField[];
+  rejected: AgentRejection[];
+  help: FieldHelp | null;
+  next_field: string | null;
+  application: ApplicationRead;
+}
+
+export interface TranscribeResponse {
+  ok: boolean;
+  text: string;
+  normalized: string;
+  language: string;
+  detected_language: string | null;
+  latency_seconds: number | null;
+  truncated: boolean;
+  message: string | null;
+  fallback: "retry" | "type" | null;
+}
+
+export interface ConversationMessage {
+  id: number;
+  role: string;
+  channel: string;
+  content: string;
+  field_id: string | null;
+  created_at: string;
+}
+
+// ---- Form definition (backend/app/schemas/form.py) ----
+
+export interface FormOption {
+  value: string;
+  label: { en: string; kn: string };
+}
+
+export interface FormFieldDef {
+  id: string;
+  type: string;
+  label: { en: string; kn: string };
+  required: boolean;
+  core: boolean;
+  options: FormOption[];
+  show_if: { field: string; equals: string } | null;
+  calculated: boolean;
+  compare_with_document: boolean;
+  validation: Record<string, unknown>;
+}
+
+export interface FormSection {
+  id: string;
+  title: { en: string; kn: string };
+  fields: FormFieldDef[];
+}
+
+export interface FormDefinition {
+  form_id: string;
+  version: string;
+  sections: FormSection[];
+}
+
+// ---- Review and submission (backend/app/schemas/submission.py) ----
+
+export interface ReviewItem {
+  field_id: string;
+  label: string;
+  display: string;
+  value: FieldValue;
+  source: string | null;
+  confirmed: boolean;
+}
+
+export interface ReviewSection {
+  id: string;
+  title: string;
+  items: ReviewItem[];
+}
+
+export interface ReadinessIssue {
+  kind: "missing" | "invalid" | "cross_field";
+  field_id: string | null;
+  label: string | null;
+  section_id: string | null;
+  section_title: string | null;
+  message: string;
+}
+
+export interface ReviewRead {
+  status: ApplicationStatus;
+  language: Language;
+  ready: boolean;
+  can_submit: boolean;
+  submitted: boolean;
+  reference_id: string | null;
+  submitted_at: string | null;
+  issues: ReadinessIssue[];
+  sections: ReviewSection[];
+}
+
+export interface SubmitResult {
+  reference_id: string;
+  submitted_at: string;
+  status: ApplicationStatus;
+  already_submitted: boolean;
+}

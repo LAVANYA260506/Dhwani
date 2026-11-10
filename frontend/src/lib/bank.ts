@@ -101,4 +101,5 @@ export const FOOTER_COLUMNS: { heading: string; links: NavLink[] }[] = [
 /** Shown in the footer and on the application page. */
 export const PROTOTYPE_NOTICE =
   "EduVest is a fictional bank created for a prototype demonstration. " +
-  "No real loan application, submission or approval takes place.";
+  "No real loan application, submission or approval takes place. " +
+  "Please use made-up details only. Applications are deleted automatically after 24 hours.";
