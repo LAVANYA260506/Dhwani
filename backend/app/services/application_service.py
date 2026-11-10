@@ -11,11 +11,12 @@ checks for now. Phase 6 replaces its body with the full validation engine.
 """
 
 import re
-from datetime import datetime, timezone
+from datetime import datetime, timezone,timedelta
 from typing import Any
 
 from sqlalchemy.orm import Session
 
+from app.config import settings
 from app.core import lifecycle
 from app.core.exceptions import ConflictError, UnauthorizedError, ValidationFailedError
 from app.core.security import generate_session_token, hash_token
@@ -82,6 +83,11 @@ class ApplicationService:
                 "Consent is required to start an application."
             )
 
+                # Keep only recent applications (public demo: no long-term storage)
+        if settings.DATA_RETENTION_HOURS > 0:
+            cutoff = datetime.now(timezone.utc) - timedelta(hours=settings.DATA_RETENTION_HOURS)
+            self.repo.delete_stale(cutoff)
+        
         raw_token, token_hash = generate_session_token()
         now = datetime.now(timezone.utc)
 
@@ -129,6 +135,10 @@ class ApplicationService:
         self.repo.save(application)
         return self.get_state(application)
 
+    def delete_application(self, application: Application) -> None:
+        """The applicant asked for their data to be deleted."""
+        self.repo.delete(application)
+    
     # -----------------------------------------------------------------
     # Read
     # -----------------------------------------------------------------

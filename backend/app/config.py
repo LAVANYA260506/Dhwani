@@ -37,7 +37,7 @@ class Settings(BaseSettings):
 
     # ---------- Database ----------
     DATABASE_URL: str = "sqlite:///./database/dhwani.db"
-
+    DATA_RETENTION_HOURS: int = 24  # applications are deleted this long after last activity (0 = keep)
     # ---------- Document upload ----------
     UPLOAD_DIR: str = "./uploads"
     MAX_UPLOAD_SIZE_MB: int = 5
@@ -74,10 +74,13 @@ class Settings(BaseSettings):
     # ---------- Derived values ----------
     @field_validator("DATABASE_URL")
     @classmethod
-    def _resolve_sqlite_path(cls, value: str) -> str:
-        """Make a relative SQLite path absolute (relative to project root)
-        so the DB always lands in dhwani/database/ no matter where the
-        server is started from."""
+    def _resolve_database_url(cls, value: str) -> str:
+        # Hosted Postgres (Neon etc.): accept the URL exactly as the provider shows it
+        for prefix in ("postgres://", "postgresql://"):
+            if value.startswith(prefix):
+                return "postgresql+psycopg://" + value[len(prefix):]
+
+        # SQLite: make a relative path absolute so the DB always lands in dhwani/database/
         prefix = "sqlite:///"
         if value.startswith(prefix) and not value.startswith("sqlite:////"):
             relative = value[len(prefix):]

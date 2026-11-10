@@ -12,6 +12,7 @@ from contextlib import contextmanager
 from typing import Iterator
 
 from sqlalchemy import create_engine, event
+from sqlalchemy.pool import NullPool
 from sqlalchemy.engine import Engine
 from sqlalchemy.orm import DeclarativeBase, Session, sessionmaker
 
@@ -19,13 +20,15 @@ from app.config import settings
 
 _is_sqlite = settings.DATABASE_URL.startswith("sqlite")
 
-engine = create_engine(
-    settings.DATABASE_URL,
-    echo=False,
+_engine_options: dict = {"echo": False}
+if _is_sqlite:
     # SQLite connections are shared across FastAPI's worker threads
-    connect_args={"check_same_thread": False} if _is_sqlite else {},
-)
+    _engine_options["connect_args"] = {"check_same_thread": False}
+else:
+    # Serverless: no long-lived connection pool, and reconnect if a connection went stale
+    _engine_options.update(poolclass=NullPool, pool_pre_ping=True)
 
+engine = create_engine(settings.DATABASE_URL, **_engine_options)
 
 if _is_sqlite:
 

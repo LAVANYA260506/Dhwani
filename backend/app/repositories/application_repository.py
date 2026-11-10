@@ -3,6 +3,10 @@ Database access for applications. Services use this instead of writing
 queries themselves, so all SQL lives in one place.
 """
 
+from datetime import datetime
+
+from sqlalchemy import delete, select
+from sqlalchemy.orm import Session
 from sqlalchemy import select
 from sqlalchemy.orm import Session
 
@@ -42,6 +46,18 @@ class ApplicationRepository:
         self.db.refresh(application)
         return application
 
+    def delete(self, application: Application) -> None:
+        """Delete one application with everything attached to it."""
+        self.db.delete(application)
+        self.db.commit()
+
+    def delete_stale(self, older_than: datetime) -> int:
+        """Delete applications not touched since `older_than`. The database
+        removes their answers, messages and events through the foreign keys."""
+        result = self.db.execute(delete(Application).where(Application.updated_at < older_than))
+        self.db.commit()
+        return result.rowcount or 0
+    
     # -----------------------------------------------------------------
     # Event trail
     # -----------------------------------------------------------------

@@ -13,7 +13,7 @@ Application endpoints (all under /api).
 Authorization header.
 """
 
-from fastapi import APIRouter, Depends, Query
+from fastapi import APIRouter, Depends, Query,Response
 
 from app.api.deps import get_application_service, get_current_application
 from app.models import Application
@@ -91,3 +91,10 @@ def confirm_field(
     service: ApplicationService = Depends(get_application_service),
 ):
     return service.confirm_field(application, payload)
+
+@router.delete("/me", status_code=204, response_class=Response)
+def delete_my_application(
+    application: Application = Depends(get_current_application),
+    service: ApplicationService = Depends(get_application_service),
+):
+    service.delete_application(application)
